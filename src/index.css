@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Syne:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-base: #f3f4f6;
+    --color-bg-surface: #ffffff;
+    --color-bg-card: #ffffff;
+    --color-bg-card-hover: #f9fafb;
+    --color-border: #e5e7eb;
+    --color-border-hover: #d1d5db;
+    --color-text-primary: #111827;
+    --color-text-secondary: #6b7280;
+    --color-text-muted: #9ca3af;
+    --color-blue-dim: #dbeafe;
+    --color-green-dim: #d1fae5;
+    --color-red-dim: #fee2e2;
+    --color-amber-dim: #fef3c7;
+  }
+
+  .dark {
+    --color-bg-base: #0a0d14;
+    --color-bg-surface: #111827;
+    --color-bg-card: #1a2235;
+    --color-bg-card-hover: #1e2a42;
+    --color-border: #1f2937;
+    --color-border-hover: #374151;
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #9ca3af;
+    --color-text-muted: #4b5563;
+    --color-blue-dim: #1e3a5f;
+    --color-green-dim: #064e3b;
+    --color-red-dim: #7f1d1d;
+    --color-amber-dim: #78350f;
+  }
+
+  body {
+    @apply font-sans text-sm font-normal text-primary antialiased;
+    background-color: var(--color-bg-base);
+  }
+}
+
+.skeleton-shimmer {
+  @apply relative overflow-hidden;
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent;
+}
+
+.dark .skeleton-shimmer::after {
+  @apply via-white/5;
+}
+
+@keyframes rowHighlight {
+  0% {
+    background-color: rgba(55, 138, 221, 0.2);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.row-flash {
+  animation: rowHighlight 1.5s ease-out forwards;
+}
